@@ -12,4 +12,3 @@ public class FruitMain {
         System.out.println(fruits[0]);
     }
 }
-
