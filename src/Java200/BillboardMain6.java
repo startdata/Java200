@@ -10,6 +10,7 @@ public class BillboardMain6 {
         String str="<article class= \"chart-row";
         rfw.getBillboardData(str);
 
-        BillboardPrint.printToCSV(rfw.getBillboard(),"billboard\\"+rs+".csv");
+//        BillboardPrint.printToCSV(rfw.getBillboard(),"billboard\\"+rs+".csv");
+        BillboardPrint95.printToJSON(rfw.getBillboard(),"billboard\\"+rs+".json");
     }
 }
