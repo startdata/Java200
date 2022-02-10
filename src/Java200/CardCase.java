@@ -2,6 +2,7 @@ package Java200;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CardCase {
@@ -52,11 +53,30 @@ public class CardCase {
         }
     }
     public void sort(){
-        cards.sort(new CardComp());
+        Comparator<Card105> cmp = new Comparator<Card105>() {
+            @Override
+            public int compare(Card105 c1, Card105 c2) {
+                return c1.getCardVal().compareTo(c2.getCardVal());
+            }
+        };
+        cards.sort(cmp);
         //Collections.sort(cards,new CardComp());
     }
     public void rsort(){
-        cards.sort(new CardRomp());
+        cards.sort(new Comparator<Card105>() {
+            @Override
+            public int compare(Card105 c1, Card105 c2) {
+                return -c1.getCardVal().compareTo(c2.getCardVal());
+            }
+        });
         //Collections.sort(cards,new CardComp());
+    }
+    public void lambdasort(){
+        cards.sort((c1,c2)->{return c1.getCardVal().compareTo(c2.getCardVal());});
+    }
+    public void lambdarsort(){
+        cards.sort(
+                (c1,c2) -> {return -c1.getCardVal().compareTo(c2.getCardVal());}
+        );
     }
 }
