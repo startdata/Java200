@@ -17,5 +17,6 @@ public class CardCaseMain {
         System.out.println("=================");
         cc.rsort();
         cc.print();
+        cc.print();
     }
 }
