@@ -42,4 +42,10 @@ public class Card105 {
             return false;
         }
     }
+    public static int compareCard(Card105 c1,Card105 c2){
+        return c1.getCardVal().compareTo(c2.getCardVal());
+    }
+    public static int comapreRCard(Card105 c1,Card105 c2){
+        return -c1.getCardVal().compareTo(c2.getCardVal());
+    }
 }

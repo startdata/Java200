@@ -74,9 +74,22 @@ public class CardCase {
     public void lambdasort(){
         cards.sort((c1,c2)->{return c1.getCardVal().compareTo(c2.getCardVal());});
     }
+    public void lambdasort2(){
+        cards.sort(Comparator.comparing(Card105::getCardVal)); // comparing
+    }
+    public void lambdasort3(){
+        cards.sort(Card105::compareCard); //static
+    }
     public void lambdarsort(){
         cards.sort(
                 (c1,c2) -> {return -c1.getCardVal().compareTo(c2.getCardVal());}
         );
+    }
+    public void lambdarsort2(){
+        Comparator<Card105> mycard = (c1,c2) -> {return c1.getCardVal().compareTo(c2.getCardVal());};
+        cards.sort(mycard.reversed());
+    }
+    public void lambdarsort3(){
+        cards.sort(Card105::comapreRCard); // static
     }
 }
