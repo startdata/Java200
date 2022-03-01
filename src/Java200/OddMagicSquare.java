@@ -42,6 +42,7 @@ public class OddMagicSquare {
    }
    public void print(){
        System.out.println();
+       System.out.println(n+"is magic:" +isMagic());
        for(int i =0; i<n; i++){
            for(int j=0; j<n; j++){
                System.out.println(magic[i][j]+"\t");
@@ -49,4 +50,55 @@ public class OddMagicSquare {
            System.out.println();
        }
    }
+
+   //row 행에 대한 열의 합
+    private int sumRow(int row){
+        int tot = 0;
+        for(int i = 0; i < n; i++){
+            tot+=magic[row][i];
+        }
+        return tot;
+    }
+    //col 열에 대한 행의 합
+    private int sumCol(int col){
+        int tot=0;
+        for(int i = 0; i<n;i++){
+            tot+=magic[i][col];
+        }
+        return tot;
+    }
+    //역 대각선 (2,0)(1,1)(0,2)
+    private int sumDia(){
+        int tot=0;
+        for(int i=0; i <n; i++){
+            tot+=magic[i][n-1-i];
+        }
+        return tot;
+    }
+    // 대각선(0.0)(1,1)(2,2)
+    private int sumReverseDia(){
+        int tot = 0;
+        for(int i =0; i<n;i++){
+            tot+=magic[i][i];
+        }
+        return tot;
+    }
+    //마방진이 잘되었는가를 판단
+    private boolean isMagic(){
+        boolean isM = true;
+        int[]m=new int[2*n+2];  //행수n+열수n+대각선1+역대각선1
+        for(int i = 0;i < n;i++){
+            m[i]=sumRow(i); //0,1,2행의 합
+            m[i+n]=sumCol(i);//3,4,5행의 합
+        }
+            m[2*n]=sumReverseDia(); //역대각선의 합
+            m[2*n-1]=sumDia();  //대각선의 합
+            for(int i= 1; i < m.length;i++){
+                if(m[0]==0 ||m[0]!=m[i]){
+                    isM = false;
+                    break;
+                }
+            }
+            return isM;
+    }
 }
